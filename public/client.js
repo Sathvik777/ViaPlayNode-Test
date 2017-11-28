@@ -3,17 +3,16 @@ $(function() {
   $.get('/dreams', function(dreams) {
     dreams.forEach(function(dream) {
       var videoFrame = $('#videoFrame');
-      $('<li></li>').text(dream).appendTo('ul#dreams');
+       videoFrame.attr('src',);
     });
   });
 
-  $('form').submit(function(event) {
+  $('form').click(function(event) {
     event.preventDefault();
-    var dream = $('input').val();
-    $.post('/dreams?' + $.param({dream: dream}), function() {
-      $('<li></li>').text(dream).appendTo('ul#dreams');
-      $('input').val('');
-      $('input').focus();
+    var query = $('#query').val();
+    $.get('/viaplay-trailer-gen/text?embed=true&search=' + query, function(response) {
+      var videoFrame = $('#videoFrame');
+       videoFrame.attr('src',response.youtubeTrailerLink);
     });
   });
 
