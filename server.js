@@ -3,6 +3,8 @@ var app = express();
 var bodyParser = require('body-parser')
 var viaplay = require('./requestManager/viaPlay');
 var movieDB = require('./requestManager/movieDB');
+var youtubeWatchUrl = "https://www.youtube.com/watch?v=";
+var youtubeEmbedUrl = "https://www.youtube.com/embed/";
 
 // JSON body parser
 app.use(bodyParser.json());
@@ -24,15 +26,21 @@ app.get("/viaplay-trailer-gen/text", function (request, response) {
   /**
     Using Promises to avoid callback-hell
   */
+  console.log(request.query.embed);
   viaplay.getMovieIMDBFromText(request.query.search)
     .then( function(movieImdbId){
       return movieDB.getMovieDBID(movieImdbId);
   }).then( function(movieDBId){
-      return movieDB.getMovieDBTrailer(movieDBId);
+      return movieDB.getMovieDBTrailerID(movieDBId);
   }).catch(function(err) {
-    response.status(400).send({ error: err });
-  }).done(function(trailerUrl) {
-      response.status(200).send({ youtubeTrailerLink: trailerUrl });
+    response.status(400).send({ error: "Movie Not Found" });
+  }).done(function(youtubeID) {
+     if(request.query.embed){
+      var trailerUrl = youtubeEmbedUrl + youtubeID;
+    } else{
+       trailerUrl = youtubeWatchUrl + youtubeID;
+    }
+    response.status(200).send({ youtubeTrailerLink: trailerUrl });
     });
 });
 
@@ -47,10 +55,15 @@ app.post("/viaplay-trailer-gen/url", function (request, response) {
     .then( function(movieImdbId){
       return movieDB.getMovieDBID(movieImdbId);
   }).then( function(movieDBId){
-      return movieDB.getMovieDBTrailer(movieDBId);
+      return movieDB.getMovieDBTrailerID(movieDBId);
   }).catch(function(err) {
     response.status(400).send({ error: "Movie Not Found" });
-  }).done(function(trailerUrl) {
+  }).done(function(youtubeID) {
+    if(request.query.embed){
+      var trailerUrl = youtubeEmbedUrl+youtubeID;
+    } else{
+       trailerUrl = youtubeWatchUrl+youtubeID;
+    }
       response.status(200).send({youtubeTrailerLink: trailerUrl });
     });
 });

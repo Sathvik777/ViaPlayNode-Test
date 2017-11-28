@@ -30,7 +30,7 @@ module.exports = {
   Function takes the movie db ID
   returns a Promise which makes sure to stay in sync and provide Yoube Trailer ID
   */
-  getMovieDBTrailer: function(movieDBId) {
+  getMovieDBTrailerID: function(movieDBId) {
     console.log(apiKey);
     return Q.Promise(function(resolve, reject) {
       client.get('movie/'+movieDBId+'?api_key='+apiKey+'&append_to_response=trailers', function (err, res, body) {
@@ -42,7 +42,7 @@ module.exports = {
         } else {
           console.log(body.trailers.youtube[0].source);
           const youtubeVideoId = body.trailers.youtube[0].source;
-          resolve(`https://www.youtube.com/watch?v=${youtubeVideoId}`);
+          resolve(body.trailers.youtube[0].source);
         }
       });
     });
