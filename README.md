@@ -64,7 +64,7 @@ API-USEAGE:
 
 Find out more [about Code](https://glitch.com/edit/#!/tricky-seal).
 
-Working endpoint
+Working endpoint:
 
   POST : https://tricky-seal.glitch.me/viaplay-trailer-gen/url
 
