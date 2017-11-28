@@ -43,13 +43,21 @@ API-USEAGE:
     }
 
 
-#### Note
+#### User Test
 ------------------------
 
 Find out more [about Code](https://glitch.com/edit/#!/tricky-seal).
 
 
-Test Project endpoint - https://tricky-seal.glitch.me/
+Test Project endpoint - [Base EndPoint](https://tricky-seal.glitch.me/)
 
-Test Project example - https://tricky-seal.glitch.me/viaplay-trailer-gen/text?search=arrival-2016
+Test Project example - [Arrival-2016 Text based search](https://tricky-seal.glitch.me/viaplay-trailer-gen/text?search=arrival-2016)
 \ ゜o゜)ノ
+
+
+
+#### TODO
+------------------------
+
+* Write tests
+* New Error handling

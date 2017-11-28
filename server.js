@@ -1,11 +1,13 @@
 var express = require('express');
 var app = express();
+
+let config = require('./config');
 var bodyParser = require('body-parser')
 var viaplay = require('./requestManager/viaPlay');
 var movieDB = require('./requestManager/movieDB');
 var youtubeWatchUrl = "https://www.youtube.com/watch?v=";
 var youtubeEmbedUrl = "https://www.youtube.com/embed/";
-
+var port = config.serverPort;
 // JSON body parser
 app.use(bodyParser.json());
 
@@ -87,7 +89,7 @@ app.post("/viaplay-trailer-gen/url", function (request, response, next) {
 
 
 
-var listener = app.listen(3000, function () {
+var listener = app.listen(port, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
