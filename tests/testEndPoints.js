@@ -7,21 +7,38 @@ let should = chai.should();
 chai.use(chaiHttp);
 
 
- describe('/POST book', () => {
-      it('it should not POST a book without pages field', (done) => {
+describe('/POST url Positive', () => {
+      it('it should POST URL and return youtube url', (done) => {
         let requestBody = {
-            url: ""
+            "url" : "https://content.viaplay.se/pc-se/film/arrival-2016"
         }
         chai.request(server)
-            .post('/book')
-            .send(book)
+            .post('/viaplay-trailer-gen/url')
+            .send(requestBody)
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
-                res.body.should.have.property('errors');
-                res.body.errors.should.have.property('pages');
-                res.body.errors.pages.should.have.property('kind').eql('required');
+                res.body.should.have.property('youtubeTrailerLink');
               done();
             });
       });
  });
+
+
+
+describe('/POST url Negative', () => {
+    it('it should POST URL and NOT return youtube url', (done) => {
+      let requestBody = {
+          "url" : ""
+      }
+      chai.request(server)
+          .post('/viaplay-trailer-gen/url')
+          .send(requestBody)
+          .end((err, res) => {
+              res.should.have.status(400);
+              res.body.should.be.a('object');
+              res.body.should.have.property('error');
+            done();
+          });
+    });
+});
