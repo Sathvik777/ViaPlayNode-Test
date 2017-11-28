@@ -15,7 +15,7 @@ Application that takes a ViaPlay API Url of a Movie and finds the Trailer link o
 #### Install and Run - Instructions
 ------------------------
 
-  CLone the repository: git clone https://github.com/Sathvik777/ViaPlayNode-Test.git
+  Clone the repository: git clone https://github.com/Sathvik777/ViaPlayNode-Test.git
 
   Change working Dir to ViaPlayNode-Test:cd ViaPlayNode-Test
 
