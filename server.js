@@ -1,39 +1,62 @@
-// server.js
-// where your node app starts
-
-// init project
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser')
+var viaplay = require('./requestManager/viaPlay');
+var movieDB = require('./requestManager/movieDB');
 
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
+// JSON body parser
+app.use(bodyParser.json());
 
-// http://expressjs.com/en/starter/static-files.html
+// using public folder to provide static files 
 app.use(express.static('public'));
 
-// http://expressjs.com/en/starter/basic-routing.html
+// Fallback endpoint
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/dreams", function (request, response) {
-  response.send(dreams);
+
+/**
+  GET endpoint takes Query Param `search` as movie name to search Viaplay endpoint and find Youtube Trailer Link
+*/
+
+app.get("/viaplay-trailer-gen/text", function (request, response) {
+  /**
+    Using Promises to avoid callback-hell
+  */
+  viaplay.getMovieIMDBFromText(request.query.search)
+    .then( function(movieImdbId){
+      return movieDB.getMovieDBID(movieImdbId);
+  }).then( function(movieDBId){
+      return movieDB.getMovieDBTrailer(movieDBId);
+  }).catch(function(err) {
+    response.status(400).send({ error: err });
+  }).done(function(trailerUrl) {
+      response.status(200).send({ youtubeTrailerLink: trailerUrl });
+    });
 });
 
-// could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
-app.post("/dreams", function (request, response) {
-  dreams.push(request.query.dream);
-  response.sendStatus(200);
+/**
+  POST endpoint takes Json Request body find Youtube Trailer Link
+*/
+app.post("/viaplay-trailer-gen/url", function (request, response) {
+   /**
+    Using Promises to avoid callback-hell
+  */
+  viaplay.getMovieIMDBFromURL(request.query.search)
+    .then( function(movieImdbId){
+      return movieDB.getMovieDBID(movieImdbId);
+  }).then( function(movieDBId){
+      return movieDB.getMovieDBTrailer(movieDBId);
+  }).catch(function(err) {
+    response.status(400).send({ error: err });
+  }).done(function(trailerUrl) {
+      response.status(200).send({youtubeTrailerLink: trailerUrl });
+    });
 });
 
-// Simple in-memory store for now
-var dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
 
-// listen for requests :)
+
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
