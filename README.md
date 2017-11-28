@@ -19,7 +19,7 @@ Application that takes a ViaPlay API Url of a Movie and finds the Trailer link o
 
   Change working Dir to ViaPlayNode-Test:cd ViaPlayNode-Test
 
-  In ViaPlayNode-Test folder: Paste config.js
+  In ViaPlayNode-Test folder  download and paste config.js file provided by owner
 
   Install all packages need: npm install
 
