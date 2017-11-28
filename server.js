@@ -49,7 +49,7 @@ app.post("/viaplay-trailer-gen/url", function (request, response) {
   }).then( function(movieDBId){
       return movieDB.getMovieDBTrailer(movieDBId);
   }).catch(function(err) {
-    response.status(400).send({ error: err });
+    response.status(400).send({ error: "Movie Not Found" });
   }).done(function(trailerUrl) {
       response.status(200).send({youtubeTrailerLink: trailerUrl });
     });

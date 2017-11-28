@@ -49,6 +49,7 @@ API-USEAGE:
 Find out more [about Code](https://glitch.com/edit/#!/tricky-seal).
 
 
-Live Project endpoint - https://tricky-seal.glitch.me/
+Test Project endpoint - https://tricky-seal.glitch.me/
 
+Test Project example - https://tricky-seal.glitch.me/viaplay-trailer-gen/text?search=arrival-2016
 \ ゜o゜)ノ
