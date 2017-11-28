@@ -40,11 +40,10 @@ app.post("/viaplay-trailer-gen/url", function (request, response, next) {
         trailerUrl = youtubeWatchUrl +''+ youtubeVideoId;
      }
 
-      response.statusCode = 200;
+     response.statusCode = 200;
      response.json({ youtubeTrailerLink: trailerUrl });
      return;
   }).catch(function(err) {
-
     response.statusCode = 400;
     response.json({ error: "Movie Not Found" });
     return;

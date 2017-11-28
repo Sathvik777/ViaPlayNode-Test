@@ -8,6 +8,7 @@ var fallbackYouTubeId = "";
 var apiKey = process.env.MOVIEDB_KEY || config.movieDBapiKey;
 
 module.exports = {
+
   /**
   Function takes IMDB movie ID
   returns a Promise which makes sure to stay in sync and provide the movie db ID
@@ -26,6 +27,7 @@ module.exports = {
       });
     });
   },
+
   /**
   Function takes the movie db ID
   returns a Promise which makes sure to stay in sync and provide Yoube Trailer ID
