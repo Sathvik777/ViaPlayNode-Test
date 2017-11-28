@@ -15,17 +15,17 @@ Application that takes a ViaPlay API Url of a Movie and finds the Trailer link o
 #### Install and Run - Instructions
 ------------------------
 
-  Clone the repository: git clone https://github.com/Sathvik777/ViaPlayNode-Test.git
+- Clone the repository: git clone https://github.com/Sathvik777/ViaPlayNode-Test.git
 
-  Change working Dir to ViaPlayNode-Test:cd ViaPlayNode-Test
+- Change working Dir to ViaPlayNode-Test:cd ViaPlayNode-Test
 
-  In ViaPlayNode-Test folder  download and paste config.js file provided by owner
+- In ViaPlayNode-Test folder  download and paste config.js file provided by owner
 
-  Install all packages need: npm install
+- Install all packages need: npm install
 
-  Run tests to make sure Endpoint is working: npm test
+- Run tests to make sure Endpoint is working: npm test
 
-  Start the Node server : npm start
+- Start the Node server : npm start
 
 
 
