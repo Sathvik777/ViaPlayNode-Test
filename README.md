@@ -70,12 +70,12 @@ API-USEAGE:
 #### Important Endpoints
 ------------------------
 
-Find out more [about Code](https://glitch.com/edit/#!/tricky-seal).
+Find out more [about Code](https://glitch.com/edit/#!/frost-earthquake).
 
 
 Working endpoint:
 
-  POST : https://tricky-seal.glitch.me/viaplay-trailer-gen/url
+  POST : https://frost-earthquake.glitch.me/viaplay-trailer-gen/url
 
   request-body    : {
     "url": "https://content.viaplay.se/pc-se/film/arrival-2016"
