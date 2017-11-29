@@ -58,11 +58,18 @@ API-USEAGE:
 
     }
 
+#### TO-DO
+------------------------
+* More specific error handling
+* Better config management
+
+
 
 #### Important Endpoints
 ------------------------
 
 Find out more [about Code](https://glitch.com/edit/#!/tricky-seal).
+
 
 Working endpoint:
 
