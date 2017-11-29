@@ -62,6 +62,8 @@ API-USEAGE:
 ------------------------
 * More specific error handling
 * Better config management
+* Load tests
+* Detailed unit tests
 
 
 
