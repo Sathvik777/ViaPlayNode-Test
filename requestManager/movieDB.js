@@ -1,4 +1,4 @@
-
+// Same kind of changes as for viaPlay.js are advised here
 var Q = require('q');
 let config = require('../config');
 const themoviedbBaseUrl =  process.env.MOVIEDB_BASE_URL || config.themoviedbBaseUrl;
